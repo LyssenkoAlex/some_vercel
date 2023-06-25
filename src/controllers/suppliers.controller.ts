@@ -54,6 +54,8 @@ controller.get("/:id", async (req: Request, res: Response) => {
     if (!supplier.rows.length) {
       return res.status(404).send({ error: "Supplier not found" });
     }
+    res.setHeader('Access-Control-Allow-Credentials', "true");
+      res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).send(supplier.rows);
   } catch (error) {
     res.status(500).send({ error: error.message });

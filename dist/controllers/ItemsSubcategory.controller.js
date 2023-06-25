@@ -18,6 +18,8 @@ const controller = express_1.default.Router();
 controller.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const subcategory = yield db_1.default.query(`select * from items_subcategories`);
+        res.setHeader('Access-Control-Allow-Credentials', "true");
+        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).send(subcategory.rows);
     }
     catch (error) {

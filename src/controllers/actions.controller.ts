@@ -38,6 +38,8 @@ controller.get("/pagination", async (req: Request, res: Response) => {
         `,
       [start, end]
     );
+      res.setHeader('Access-Control-Allow-Credentials', "true");
+      res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).send(actions.rows);
   } catch (error) {
     res.status(500).send({ error: error.message });

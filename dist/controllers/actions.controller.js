@@ -47,6 +47,8 @@ controller.get("/pagination", (req, res) => __awaiter(void 0, void 0, void 0, fu
       where a.id between $1 and $2
       order by a.id
         `, [start, end]);
+        res.setHeader('Access-Control-Allow-Credentials', "true");
+        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).send(actions.rows);
     }
     catch (error) {

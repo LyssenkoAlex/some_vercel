@@ -18,6 +18,8 @@ const controller = express_1.default.Router();
 controller.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const storages = yield db_1.default.query(`select*from storages`);
+        res.setHeader('Access-Control-Allow-Credentials', "true");
+        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).send(storages.rows);
     }
     catch (error) {
