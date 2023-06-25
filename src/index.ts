@@ -19,7 +19,7 @@ app.use(express.static("public"));
 
 
 app.get('/', (_req: Request, res: Response) => {
-	return res.send('Express Typescript on Vercel 6')
+	return res.send('Express Typescript on Vercel 7')
 })
 
 app.get('/ping', (_req: Request, res: Response) => {
