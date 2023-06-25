@@ -6,8 +6,7 @@ const controller: Router = express.Router();
 controller.get("/country", async (req: Request, res: Response) => {
     try {
         const country = await db.query(`SELECT * FROM countries;`);
-        res.setHeader('Access-Control-Allow-Credentials', "true");
-        res.setHeader('Access-Control-Allow-Origin', '*');
+
         res.status(200).send(country.rows);
     } catch (error) {
         res.status(500).send({ error: error.message });

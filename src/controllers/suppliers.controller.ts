@@ -187,7 +187,7 @@ controller.post(
         WHERE s.id = $1`,
         [newSupplier.rows[0].id]
       );
-        res.setHeader('Access-Control-Allow-Credentials', "true");
+
         res.setHeader('Access-Control-Allow-Origin', '*');
       res.status(200).send(supplier.rows);
     } catch (error) {
@@ -209,8 +209,7 @@ controller.delete("/:id", async (req: Request, res: Response) => {
     }
 
     await db.query("DELETE FROM suppliers WHERE id = $1", [id]);
-      res.setHeader('Access-Control-Allow-Credentials', "true");
-      res.setHeader('Access-Control-Allow-Origin', '*');
+
     res.status(200).send({ message: "Supplier deleted successfully" });
   } catch (error) {
     res.status(500).send({ error: error.message });
