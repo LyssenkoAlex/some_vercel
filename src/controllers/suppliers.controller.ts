@@ -23,7 +23,8 @@ controller.get("/", async (req: Request, res: Response) => {
       inner join cities ci on ci.id = s.id_city 
 order by s.name_supplier`
     );
-
+      res.setHeader('Access-Control-Allow-Credentials', "true");
+      res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).send(suppliers.rows);
   } catch (error) {
     res.status(500).send({ error: error.message });
@@ -126,7 +127,8 @@ controller.put(
         WHERE s.id = $1`,
         [id]
       );
-
+        res.setHeader('Access-Control-Allow-Credentials', "true");
+        res.setHeader('Access-Control-Allow-Origin', '*');
       res.status(200).send(selectedSupplier.rows);
     } catch (error) {
       res.status(500).send({ error: error.message });
@@ -185,7 +187,8 @@ controller.post(
         WHERE s.id = $1`,
         [newSupplier.rows[0].id]
       );
-
+        res.setHeader('Access-Control-Allow-Credentials', "true");
+        res.setHeader('Access-Control-Allow-Origin', '*');
       res.status(200).send(supplier.rows);
     } catch (error) {
       res.status(500).send({ error: error.message });
@@ -206,7 +209,8 @@ controller.delete("/:id", async (req: Request, res: Response) => {
     }
 
     await db.query("DELETE FROM suppliers WHERE id = $1", [id]);
-
+      res.setHeader('Access-Control-Allow-Credentials', "true");
+      res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).send({ message: "Supplier deleted successfully" });
   } catch (error) {
     res.status(500).send({ error: error.message });
