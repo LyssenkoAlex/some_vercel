@@ -18,7 +18,7 @@ const port = process.env.PORT || 8080;
 app.use(express_1.default.json());
 app.use(express_1.default.static("public"));
 app.get('/', (_req, res) => {
-    return res.send('Express Typescript on Vercel 7');
+    return res.send('Express Typescript on Vercel 8');
 });
 app.get('/ping', (_req, res) => {
     return res.send('pong 🏓');
