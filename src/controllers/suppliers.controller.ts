@@ -23,8 +23,19 @@ controller.get("/", async (req: Request, res: Response) => {
       inner join cities ci on ci.id = s.id_city 
 order by s.name_supplier`
     );
-      res.setHeader('Access-Control-Allow-Credentials', "true");
       res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+      res.setHeader('Access-Control-Allow-Credentials', "true");
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, OPTIONS, DELETE');
+
+
+      if(req.method === 'OPTIONS') {
+          return res.status(200).json(({
+              body: "OK"
+          }))
+      }
+
+
     res.status(200).send(suppliers.rows);
   } catch (error) {
     res.status(500).send({ error: error.message });
