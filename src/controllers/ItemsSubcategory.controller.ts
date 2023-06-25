@@ -6,8 +6,7 @@ const controller: Router = express.Router();
 controller.get("/", async (req: Request, res: Response) => {
     try {
         const subcategory = await db.query(`select * from items_subcategories`);
-        res.setHeader('Access-Control-Allow-Credentials', "true");
-        res.setHeader('Access-Control-Allow-Origin', '*');
+
         res.status(200).send(subcategory.rows);
     } catch (error) {
         res.status(500).send({ error: error.message });

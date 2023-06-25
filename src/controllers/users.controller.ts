@@ -68,8 +68,7 @@ controller.post(
           date
         ]
       );
-      res.setHeader('Access-Control-Allow-Credentials', "true");
-      res.setHeader('Access-Control-Allow-Origin', '*');
+
       res.status(200).send(newUser.rows);
     } catch (error) {
       res.status(500).send({ error: error.message });
@@ -130,8 +129,7 @@ controller.post("/login", async (req: Request, res: Response) => {
             where u.username = $1`,
       [username]
     );
-    res.setHeader('Access-Control-Allow-Credentials', "true");
-    res.setHeader('Access-Control-Allow-Origin', '*');
+
     res.status(200).send(authorizedUser.rows);
   } catch (error) {
     res.status(500).send({ error: error.message });
@@ -150,8 +148,7 @@ controller.delete("/logout", async (req, res) => {
     ]);
 
     if (user.rowCount === 0) {
-      res.setHeader('Access-Control-Allow-Credentials', "true");
-      res.setHeader('Access-Control-Allow-Origin', '*');
+
       return res.status(200).send({ message: "Logout successfull!" });
     }
 
@@ -164,8 +161,7 @@ controller.delete("/logout", async (req, res) => {
                     RETURNING *`,
       [dropToken, token]
     );
-    res.setHeader('Access-Control-Allow-Credentials', "true");
-    res.setHeader('Access-Control-Allow-Origin', '*');
+
     res.status(200).send({ message: "Logout successful" });
   } catch (error) {
     res.status(500).send({ error: error.message });

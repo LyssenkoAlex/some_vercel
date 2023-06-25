@@ -151,7 +151,6 @@ controller.post("/", (0, validateRequest_1.default)(supplier_model_1.default), (
         inner join countries c on c.id = s.id_country
         inner join cities ci on ci.id = s.id_city
         WHERE s.id = $1`, [newSupplier.rows[0].id]);
-        res.setHeader('Access-Control-Allow-Credentials', "true");
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).send(supplier.rows);
     }
@@ -169,8 +168,6 @@ controller.delete("/:id", (req, res) => __awaiter(void 0, void 0, void 0, functi
             return res.status(400).send({ error: "Supplier not found" });
         }
         yield db_1.default.query("DELETE FROM suppliers WHERE id = $1", [id]);
-        res.setHeader('Access-Control-Allow-Credentials', "true");
-        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).send({ message: "Supplier deleted successfully" });
     }
     catch (error) {

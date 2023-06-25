@@ -25,8 +25,6 @@ controller.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
       END name
       from suppliers_storages st
         `);
-        res.setHeader('Access-Control-Allow-Credentials', "true");
-        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).send(suppliers_storages.rows);
     }
     catch (error) {

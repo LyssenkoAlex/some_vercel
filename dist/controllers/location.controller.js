@@ -18,8 +18,6 @@ const controller = express_1.default.Router();
 controller.get("/country", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const country = yield db_1.default.query(`SELECT * FROM countries;`);
-        res.setHeader('Access-Control-Allow-Credentials', "true");
-        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).send(country.rows);
     }
     catch (error) {

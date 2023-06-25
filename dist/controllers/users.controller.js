@@ -58,8 +58,6 @@ controller.post("/", (0, validateRequest_1.default)(users_model_1.default), (req
             city,
             date
         ]);
-        res.setHeader('Access-Control-Allow-Credentials', "true");
-        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).send(newUser.rows);
     }
     catch (error) {
@@ -105,8 +103,6 @@ controller.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, functi
             left join countries coun on coun.id = u.id_country
             left join cities cty on cty.id = u.id_city
             where u.username = $1`, [username]);
-        res.setHeader('Access-Control-Allow-Credentials', "true");
-        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).send(authorizedUser.rows);
     }
     catch (error) {
@@ -123,8 +119,6 @@ controller.delete("/logout", (req, res) => __awaiter(void 0, void 0, void 0, fun
             token
         ]);
         if (user.rowCount === 0) {
-            res.setHeader('Access-Control-Allow-Credentials', "true");
-            res.setHeader('Access-Control-Allow-Origin', '*');
             return res.status(200).send({ message: "Logout successfull!" });
         }
         // @ts-ignore
@@ -133,8 +127,6 @@ controller.delete("/logout", (req, res) => __awaiter(void 0, void 0, void 0, fun
                     token = $1
                     WHERE token = $2
                     RETURNING *`, [dropToken, token]);
-        res.setHeader('Access-Control-Allow-Credentials', "true");
-        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).send({ message: "Logout successful" });
     }
     catch (error) {

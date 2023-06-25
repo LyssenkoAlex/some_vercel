@@ -15,8 +15,7 @@ controller.get("/", async (req: Request, res: Response) => {
       from suppliers_storages st
         `
     );
-    res.setHeader('Access-Control-Allow-Credentials', "true");
-    res.setHeader('Access-Control-Allow-Origin', '*');
+
     res.status(200).send(suppliers_storages.rows);
   } catch (error) {
     res.status(500).send({ error: error.message });

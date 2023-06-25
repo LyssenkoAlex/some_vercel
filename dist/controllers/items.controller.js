@@ -46,8 +46,6 @@ controller.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         inner join items_categories ic on ic.id = s.id_category
         inner join items_subcategories isc ON isc.id = s.id_subcategory
         inner join users u on u.id = s.id_user`);
-        res.setHeader('Access-Control-Allow-Credentials', "true");
-        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).send(item.rows);
     }
     catch (error) {
